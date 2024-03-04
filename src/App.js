@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './styles/styles.css'; // Import the styles.css file
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Registration from './components/Registration';
+import Login from './components/Login';
+import ZipCodePage from './components/ZipCodePage'; // Corrected file path
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/zipcode" element={<ZipCodePage />} /> {/* Updated route for ZipCodePage */}
+        </Routes>
+      </div>
+      <div className="App">
+      {/* Your app content */}
     </div>
+    </Router>
   );
 }
 
