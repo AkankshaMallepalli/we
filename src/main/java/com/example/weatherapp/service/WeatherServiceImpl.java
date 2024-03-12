@@ -6,14 +6,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
-    @Value("${weather.api.key}")
-    private String weatherApiKey;
-
+    private final String weatherApiKey;
     private static final String WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json?key=%s&q=%s";
-
     private final RestTemplate restTemplate;
 
-    public WeatherServiceImpl(RestTemplate restTemplate) {
+    public WeatherServiceImpl(@Value("${weather.api.key}") String weatherApiKey, RestTemplate restTemplate) {
+        this.weatherApiKey = weatherApiKey;
         this.restTemplate = restTemplate;
     }
 

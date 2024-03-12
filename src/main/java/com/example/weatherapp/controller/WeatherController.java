@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/weather")
 public class WeatherController {
 
+    private final WeatherService weatherService;
+
     @Autowired
-    private WeatherService weatherService;
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
     @GetMapping("/{zipCode}")
     public ResponseEntity<String> getWeatherByZipCode(@PathVariable("zipCode") String zipCode) {

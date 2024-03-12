@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime; // Import LocalDateTime for timestamp
+import org.hibernate.annotations.CreationTimestamp; // Import CreationTimestamp for timestamp
 
 @Entity
 @Table(name = "custom_user")
@@ -16,6 +18,10 @@ public class CustomUser {
     private String username;
     private String password;
     private String email;
+    
+    // Add timestamp field with CreationTimestamp annotation
+    @CreationTimestamp
+    private LocalDateTime registrationTimestamp;
 
     // Constructors, getters, setters, and other methods
     public CustomUser() {
@@ -52,12 +58,22 @@ public class CustomUser {
         this.password = password;
     }
     
+    
+
     public String getEmail() {
-        return email;
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	// Getter and setter for registration timestamp
+    public LocalDateTime getRegistrationTimestamp() {
+        return registrationTimestamp;
     }
 
-    public void setEmail(String Email) {
-        this.email = email;
+    public void setRegistrationTimestamp(LocalDateTime registrationTimestamp) {
+        this.registrationTimestamp = registrationTimestamp;
     }
 }
-
